@@ -433,6 +433,13 @@ require('telescope').setup {
         ["<C-l>"] = action_layout.toggle_preview
       },
     },
+    layout_strategy = "vertical",
+    layout_config = {
+      vertical = {
+        height = { padding = 0 },
+        width = { padding = 0 }
+      }
+    },
   },
 }
 
