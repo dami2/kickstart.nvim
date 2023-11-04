@@ -288,6 +288,11 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Toggle line numbers
+vim.keymap.set('n', '<leader>tn', '<cmd>set invnumber<cr>', { desc = '[ti] Toggle line numbers' })
+-- Toggle relative line numbers
+vim.keymap.set('n', '<leader>tr', '<cmd>set invrelativenumber<cr>', { desc = '[ti] Toggle relatie line numbers' })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
