@@ -304,6 +304,14 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = '[Y] Yank line to clipboard' 
 -- Keep cursor in position after joining lines
 vim.keymap.set("n", "J", "mzJ`z")
 
+-- Center view after moving
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Center view on search
+vim.keymap.set("n", "n", "nzzzv<cmd>lua Hl_search(0.3)<cr>")
+vim.keymap.set("n", "N", "Nzzzv<cmd>lua Hl_search(0.3)<cr>")
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
