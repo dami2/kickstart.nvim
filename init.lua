@@ -773,5 +773,15 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   pattern = '*',
 })
 
+
+-- Custom command for js/ts imports
+vim.api.nvim_create_user_command('OrganizeImports', function()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = { vim.api.nvim_buf_get_name(0) }
+  }
+  vim.lsp.buf.execute_command(params)
+end, { desc = "Organize javascript imports" })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
