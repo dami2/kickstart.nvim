@@ -96,6 +96,13 @@ local function setup_ibl()
   })
 end
 
+-- Utility function to re-setup ibl only if is enabled
+local function setup_ibl_if_is_enabled()
+  if require('ibl').initialized then
+    setup_ibl()
+  end
+end
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -771,7 +778,7 @@ vim.api.nvim_create_autocmd('InsertEnter', {
     vim.cmd.colorscheme 'catppuccin'
     -- vim.cmd('hi Cursorline guibg=#212121')
     setup_lualine()
-    setup_ibl()
+    setup_ibl_if_is_enabled()
   end,
   group = mode_feed_back_group,
   pattern = '*',
@@ -781,7 +788,7 @@ vim.api.nvim_create_autocmd('InsertLeave', {
     vim.cmd.colorscheme 'dracula-soft'
     vim.cmd('hi Cursorline guibg=#404355')
     setup_lualine()
-    setup_ibl()
+    setup_ibl_if_is_enabled()
   end,
   group = mode_feed_back_group,
   pattern = '*',
