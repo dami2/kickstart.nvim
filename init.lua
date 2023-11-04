@@ -286,7 +286,10 @@ require('lazy').setup({
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
-    setup = setup_ibl
+    setup = setup_ibl,
+    keys = {
+      { "<leader>ti", "<CMD>IBLToggle<CR>", desc = "[ti] Toggle ident-blankline" },
+    },
   },
 
   -- "gc" to comment visual regions/lines
