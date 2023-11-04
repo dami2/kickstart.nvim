@@ -119,6 +119,20 @@ function Dump(o)
   end
 end
 
+-- Utility function to disconnect yamlls for helm charts
+-- The main idea here is to do a quick pattern check on the yaml file, {{.+}}.
+-- If the pattern match is true then we wait an arbitrary amount of time (500 ms seems to work well for me) and detach the yamlls from the buffer.
+local function detach_yamlls()
+  local clients = vim.lsp.get_active_clients()
+  for client_id, client in pairs(clients) do
+    if client.name == "yamlls" then
+      vim.lsp.buf_detach_client(0, client_id)
+      -- vim.cmd("LspStop ".. client.id)
+      vim.cmd "set syntax=helm"
+    end
+  end
+end
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -925,6 +939,22 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   pattern = '*',
 })
 
+local gotmpl_group = vim.api.nvim_create_augroup("_gotmpl", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = gotmpl_group,
+  pattern = "yaml",
+  callback = function()
+    vim.schedule(function()
+      local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+      for _, line in ipairs(lines) do
+        if string.match(line, "{{.+}}") then
+          vim.defer_fn(detach_yamlls, 500)
+          return
+        end
+      end
+    end)
+  end,
+})
 
 -- Custom command for js/ts imports
 vim.api.nvim_create_user_command('OrganizeImports', function()
