@@ -297,6 +297,10 @@ vim.keymap.set('n', '<leader>tr', '<cmd>set invrelativenumber<cr>', { desc = '[t
 vim.keymap.set('n', '<leader>bca', '<cmd>bufdo bdelete<cr>', { desc = '[B]uffers [C]lose [A]ll' })
 vim.keymap.set('n', '<leader>bco', '<cmd>%bd|e#<cr>', { desc = '[B]uffers [C]lose [O]thers' })
 
+-- Mappigs for yank to clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = '[y] Yank to clipboard' })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = '[Y] Yank line to clipboard' })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
