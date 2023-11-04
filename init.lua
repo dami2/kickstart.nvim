@@ -40,6 +40,27 @@ P.S. You can delete this when you're done too. It's your config now :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+
+-- Global function to blink on search
+function Blink_highlight_search(blinktime)
+  local ns = vim.api.nvim_create_namespace("search")
+  vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+
+  local search_pat = "\\c\\%#" .. vim.fn.getreg("/")
+  local m = vim.fn.matchadd("IncSearch", search_pat)
+  vim.cmd("redraw")
+  vim.cmd("sleep " .. blinktime * 1000 .. "m")
+
+  local sc = vim.fn.searchcount()
+  vim.api.nvim_buf_set_extmark(0, ns, vim.api.nvim_win_get_cursor(0)[1] - 1, 0, {
+    virt_text = { { "[" .. sc.current .. "/" .. sc.total .. "]", "Comment" } },
+    virt_text_pos = "eol",
+  })
+
+  vim.fn.matchdelete(m)
+  vim.cmd("redraw")
+end
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -307,6 +328,10 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- Center view after moving
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Center view after search and blink
+vim.keymap.set("n", "n", "nzzzv<cmd>lua Blink_highlight_search(0.3)<cr>")
+vim.keymap.set("n", "N", "Nzzzv<cmd>lua Blink_highlight_search(0.3)<cr>")
 
 -- Center view on search
 vim.keymap.set("n", "n", "nzzzv<cmd>lua Hl_search(0.3)<cr>")
