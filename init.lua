@@ -184,11 +184,16 @@ require('lazy').setup({
   --   end,
   -- },
 
+  'Haron-Prime/Antares',
   {
-    'Haron-Prime/Antares',
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
+    opts = {
+      flavour = "mocha"
+    },
     config = function()
-      vim.cmd.colorscheme 'antares'
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
   {
