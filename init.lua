@@ -426,8 +426,10 @@ require('telescope').setup {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
         ["<C-l>"] = action_layout.toggle_preview,
+        ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center -- center view after selection
       },
       n = {
+        ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center, -- center view after selection
         ["<C-l>"] = action_layout.toggle_preview
       },
     },
