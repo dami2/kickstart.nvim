@@ -679,5 +679,26 @@ cmp.setup {
   },
 }
 
+-- Autocommand for toggling colorscheme on mode change
+local mode_feed_back_group = vim.api.nvim_create_augroup('ModeFeedBack', { clear = true })
+vim.api.nvim_create_autocmd('InsertEnter', {
+  callback = function()
+    vim.cmd.colorscheme 'catppuccin'
+    -- vim.cmd('hi Cursorline guibg=#212121')
+    setup_lualine()
+  end,
+  group = mode_feed_back_group,
+  pattern = '*',
+})
+vim.api.nvim_create_autocmd('InsertLeave', {
+  callback = function()
+    vim.cmd.colorscheme 'dracula-soft'
+    vim.cmd('hi Cursorline guibg=#404355')
+    setup_lualine()
+  end,
+  group = mode_feed_back_group,
+  pattern = '*',
+})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
