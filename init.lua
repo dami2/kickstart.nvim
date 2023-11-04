@@ -135,7 +135,15 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
+      {
+        'williamboman/mason.nvim',
+        opts = {
+          ui = {
+            -- a number <1 is a percentage., >1 is a fixed size
+            width = 0.99,
+          },
+        }
+      },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
