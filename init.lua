@@ -191,6 +191,7 @@ require('lazy').setup({
             "yaml-language-server",
             "json-lsp",
             "prettier",
+            "pyright",
             "rust-analyzer"
           }
         }
@@ -796,8 +797,8 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
   -- rust_analyzer = {},
+  pyright = { filetypes = { "python" } },
   rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
