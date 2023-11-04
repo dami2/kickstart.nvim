@@ -241,6 +241,9 @@ require('lazy').setup({
 -- Set highlight on search
 vim.o.hlsearch = true
 
+-- Set blinking cursor
+vim.o.guicursor = 'a:blinkon100'
+
 -- Make line numbers default
 vim.wo.number = true
 
