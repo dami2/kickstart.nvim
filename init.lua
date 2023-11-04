@@ -476,7 +476,10 @@ vim.keymap.set('n', '<leader>sg', function()
     disable_coordinates = true
   })
 end, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sd', function()
+  require('telescope.builtin').diagnostics { no_sign = false }
+end
+  , { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
 -- [[ Configure Treesitter ]]
