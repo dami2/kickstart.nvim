@@ -377,10 +377,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv<cmd>lua Blink_highlight_search(0.3)<cr>")
 vim.keymap.set("n", "N", "Nzzzv<cmd>lua Blink_highlight_search(0.3)<cr>")
 
--- Center view on search
-vim.keymap.set("n", "n", "nzzzv<cmd>lua Hl_search(0.3)<cr>")
-vim.keymap.set("n", "N", "Nzzzv<cmd>lua Hl_search(0.3)<cr>")
-
 -- Move selected lines 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
