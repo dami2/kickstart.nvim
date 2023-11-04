@@ -228,7 +228,12 @@ require('lazy').setup({
       theme = 'dracula-soft',
       colors = {
         bg = '#303030',
-      }
+      },
+      overrides = function(colors)
+        return {
+          Search = { fg = colors.black, bg = colors.cyan, },
+        }
+      end,
     },
     config = function(_, opts)
       require("dracula").setup(opts)
