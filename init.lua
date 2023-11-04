@@ -481,6 +481,10 @@ vim.keymap.set('n', '<leader>sd', function()
 end
   , { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>sm', require('telescope.builtin').git_commits, { desc = '[S]earch co[M]mits' })
+vim.keymap.set('n', '<leader>so', require('telescope.builtin').git_bcommits, { desc = '[S]earch buffer C[o]mmits' })
+vim.keymap.set('n', '<leader>su', require('telescope.builtin').git_status, { desc = '[S]earch Git Stat[U]s' })
+vim.keymap.set('n', '<leader>st', require('telescope.builtin').git_stash, { desc = '[S]earch git s[T]ash' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
