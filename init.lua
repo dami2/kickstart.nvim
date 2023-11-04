@@ -103,6 +103,22 @@ local function setup_ibl_if_is_enabled()
   end
 end
 
+-- Utility function to print map values
+-- use it with print(Dump(some_map))
+-- read it with :messages
+function Dump(o)
+  if type(o) == 'table' then
+    local s = '{ '
+    for k, v in pairs(o) do
+      if type(k) ~= 'number' then k = '"' .. k .. '"' end
+      s = s .. '[' .. k .. '] = ' .. Dump(v) .. ','
+    end
+    return s .. '} '
+  else
+    return tostring(o)
+  end
+end
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
