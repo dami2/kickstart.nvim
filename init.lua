@@ -174,6 +174,7 @@ require('lazy').setup({
           ensure_installed = {
             "typescript-language-server",
             "eslint-lsp",
+            "yaml-language-server",
             "json-lsp",
             "prettier",
             "rust-analyzer"
@@ -779,6 +780,7 @@ local servers = {
   rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  yamlls = {},
 
   lua_ls = {
     Lua = {
