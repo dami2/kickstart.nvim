@@ -415,7 +415,24 @@ vim.keymap.set('n', '<leader>tn', '<cmd>set invnumber<cr>', { desc = '[ti] Toggl
 -- Toggle relative line numbers
 vim.keymap.set('n', '<leader>tr', '<cmd>set invrelativenumber<cr>', { desc = '[ti] Toggle relatie line numbers' })
 
--- Mappings for buffers
+-- Toggle quickfix 
+vim.keymap.set('n', '<leader>tq', function()
+  local qf_exists = false
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win["quickfix"] == 1 then
+      qf_exists = true
+    end
+  end
+  if qf_exists == true then
+    vim.cmd "cclose"
+    return
+  end
+  if not vim.tbl_isempty(vim.fn.getqflist()) then
+    vim.cmd "copen"
+  end
+end, { desc = '[tq] Toggle [Q]uickfix list' })
+
+--- Mappings for buffers
 vim.keymap.set('n', '<leader>bca', '<cmd>bufdo bdelete<cr>', { desc = '[B]uffers [C]lose [A]ll' })
 vim.keymap.set('n', '<leader>bco', '<cmd>%bd|e#<cr>', { desc = '[B]uffers [C]lose [O]thers' })
 
