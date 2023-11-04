@@ -320,6 +320,12 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>wh", "<cmd>windo wincmd K<cr>", { desc = 'Arrange [W]indows [H]orizontaly' })
 vim.keymap.set("n", "<leader>wv", "<cmd>windo wincmd H<cr>", { desc = 'Arrange [W]indows [V]erticaly' })
 
+-- Copy current buffer file path to clipboard
+vim.keymap.set("n", "<leader>cpr", '<cmd>let @+=expand("%")<cr>', { desc = '[C]opy buffer [R]elative file [P]ath' })
+vim.keymap.set("n", "<leader>cpa", '<cmd>let @+=expand("%:p")<cr>', { desc = '[C]opy buffer [A]bsolute file [P]ath' })
+vim.keymap.set("n", "<leader>cpf", '<cmd>let @+=expand("%:t")<cr>', { desc = '[C]opy buffer [F]ile name [P]ath' })
+vim.keymap.set("n", "<leader>cpd", '<cmd>let @+=expand("%:p:h")<cr>', { desc = '[C]opy buffer [D]ir name [P]ath' })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
