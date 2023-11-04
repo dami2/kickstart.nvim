@@ -144,6 +144,8 @@ require('lazy').setup({
           },
           ensure_installed = {
             "typescript-language-server",
+            "eslint-lsp",
+            "prettier",
           }
         }
       },
