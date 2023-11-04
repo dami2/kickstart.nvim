@@ -787,6 +787,7 @@ local servers = {
   rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  helm_ls = {},
   yamlls = {},
 
   lua_ls = {
@@ -812,12 +813,31 @@ mason_lspconfig.setup {
 }
 
 mason_lspconfig.setup_handlers {
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
   function(server_name)
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
+    }
+  end,
+  -- Next, you can provide a dedicated handler for specific servers.
+  -- For example, a handler override for the `helm_ls`:
+  ["helm_ls"] = function()
+    local lspconfig = require('lspconfig')
+    local util = require('lspconfig.util')
+
+    lspconfig.helm_ls.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      cmd = { "helm_ls", "serve" },
+      filetypes = { 'helm', 'yaml', 'yml' },
+      root_dir = function(fname)
+        return util.root_pattern('Chart.yaml')(fname)
+      end,
     }
   end,
 }
