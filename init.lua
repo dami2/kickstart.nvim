@@ -804,6 +804,7 @@ local servers = {
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
   helm_ls = {},
   yamlls = {},
+  sqlls = {},
 
   lua_ls = {
     Lua = {
