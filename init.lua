@@ -217,6 +217,9 @@ require('lazy').setup({
           end)
           return '<Ignore>'
         end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
+        vim.keymap.set('n', '<leader>tgb', require('gitsigns').toggle_current_line_blame, { buffer = bufnr, desc = '[T]oggle [G]it [B]lame' })
+        vim.keymap.set('n', '<leader>rh', require('gitsigns').reset_hunk, { buffer = bufnr, desc = '[R]eset [H]uk' })
+        vim.keymap.set('n', '<leader>gsh', require('gitsigns').stage_hunk, { buffer = bufnr, desc = '[G]it [S]tage [H]uk' })
       end,
     },
   },
