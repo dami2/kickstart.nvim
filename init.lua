@@ -188,12 +188,22 @@ require('lazy').setup({
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    priority = 1000,
     opts = {
       flavour = "mocha"
+    }
+  },
+  {
+    'Mofiqul/dracula.nvim',
+    priority = 1000,
+    opts = {
+      theme = 'dracula-soft',
+      colors = {
+        bg = '#303030',
+      }
     },
-    config = function()
-      vim.cmd.colorscheme 'catppuccin'
+    config = function(_, opts)
+      require("dracula").setup(opts)
+      vim.cmd.colorscheme 'dracula'
     end,
   },
   {
