@@ -316,6 +316,12 @@ vim.keymap.set("n", "N", "Nzzzv<cmd>lua Hl_search(0.3)<cr>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Center view on Quick and Location list commands
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = '[k] Next location list' })
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = '[j] Prev location list' })
+
 -- Widow arrangement
 vim.keymap.set("n", "<leader>wh", "<cmd>windo wincmd K<cr>", { desc = 'Arrange [W]indows [H]orizontaly' })
 vim.keymap.set("n", "<leader>wv", "<cmd>windo wincmd H<cr>", { desc = 'Arrange [W]indows [V]erticaly' })
@@ -479,7 +485,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<C-l>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
