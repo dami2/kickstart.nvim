@@ -142,6 +142,9 @@ require('lazy').setup({
             -- a number <1 is a percentage., >1 is a fixed size
             width = 0.99,
           },
+          ensure_installed = {
+            "typescript-language-server",
+          }
         }
       },
       'williamboman/mason-lspconfig.nvim',
