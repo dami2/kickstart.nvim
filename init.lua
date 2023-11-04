@@ -86,7 +86,13 @@ local function setup_lualine()
       lualine_y = {},
       lualine_z = {}
     },
+  })
+end
 
+-- Utility function to setup indent blank line (ibl)
+local function setup_ibl()
+  require("ibl").setup({
+    indent = { char = '┊' }
   })
 end
 
@@ -273,7 +279,7 @@ require('lazy').setup({
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
-    opts = {},
+    setup = setup_ibl
   },
 
   -- "gc" to comment visual regions/lines
@@ -765,6 +771,7 @@ vim.api.nvim_create_autocmd('InsertEnter', {
     vim.cmd.colorscheme 'catppuccin'
     -- vim.cmd('hi Cursorline guibg=#212121')
     setup_lualine()
+    setup_ibl()
   end,
   group = mode_feed_back_group,
   pattern = '*',
@@ -774,6 +781,7 @@ vim.api.nvim_create_autocmd('InsertLeave', {
     vim.cmd.colorscheme 'dracula-soft'
     vim.cmd('hi Cursorline guibg=#404355')
     setup_lualine()
+    setup_ibl()
   end,
   group = mode_feed_back_group,
   pattern = '*',
