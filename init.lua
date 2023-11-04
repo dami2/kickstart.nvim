@@ -733,6 +733,17 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 
   nmap('<leader>F', '<cmd>Format<cr>', '[F]ormat')
+
+  nmap('<leader>tl', function()
+    local original_bufnr = vim.api.nvim_get_current_buf()
+    local buf_clients = vim.lsp.get_active_clients { bufnr = original_bufnr }
+
+    if buf_clients[1] == nil then
+      vim.cmd('LspStart')
+    else
+      vim.cmd('LspStop')
+    end
+  end, '[tl] Toggle LSP')
 end
 
 -- document existing key chains
