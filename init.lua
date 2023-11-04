@@ -418,12 +418,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+local action_layout = require("telescope.actions.layout")
 require('telescope').setup {
   defaults = {
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+        ["<C-l>"] = action_layout.toggle_preview,
+      },
+      n = {
+        ["<C-l>"] = action_layout.toggle_preview
       },
     },
   },
