@@ -244,8 +244,8 @@ vim.o.hlsearch = true
 -- Set blinking cursor
 vim.o.guicursor = 'a:blinkon100'
 
--- Make line numbers default
-vim.wo.number = true
+-- Disable default line numbers
+vim.wo.number = false
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
