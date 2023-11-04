@@ -366,6 +366,13 @@ require('lazy').setup({
     end
   },
 
+  -- Better quickfix window in Neovim
+  {
+    "kevinhwang91/nvim-bqf",
+    event = "VeryLazy",
+    opt = {}
+  },
+
   {
     'stevearc/oil.nvim',
     opts = {
