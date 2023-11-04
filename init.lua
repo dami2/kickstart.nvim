@@ -61,6 +61,35 @@ function Blink_highlight_search(blinktime)
   vim.cmd("redraw")
 end
 
+-- Utility function to setup lualine
+local function setup_lualine()
+  require('lualine').setup({
+    options = {
+      icons_enabled = false,
+      theme = 'dracula-nvim',
+      component_separators = '|',
+      section_separators = '',
+    },
+    sections = {
+      -- lualine_a = { 'mode' },
+      lualine_b = { 'filename', 'diagnostics' },
+      lualine_c = { 'location', 'progress' },
+      lualine_x = { 'diff', 'branch' },
+      lualine_y = { 'encoding', 'fileformat', },
+      lualine_z = { 'filetype' }
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = { { 'filename', path = 1 } },
+      lualine_x = { 'location' },
+      lualine_y = {},
+      lualine_z = {}
+    },
+
+  })
+end
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -210,14 +239,7 @@ require('lazy').setup({
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
+    setup = setup_lualine
   },
 
   {
