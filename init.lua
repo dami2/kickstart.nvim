@@ -376,6 +376,13 @@ require('lazy').setup({
   },
 
   {
+    "towolf/vim-helm",
+    -- event = "VeryLazy",
+    lazy = false,
+    opt = {}
+  },
+
+  {
     'stevearc/oil.nvim',
     opts = {
       default_file_explorer = true,
