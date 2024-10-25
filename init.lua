@@ -454,9 +454,12 @@ vim.o.hlsearch = true
 vim.o.guicursor = 'a:blinkon100'
 
 -- Disable default line numbers
-vim.wo.number = false
+-- vim.wo.number = false
+
 -- Highlight the current line number
 vim.opt.cursorline = true
+-- -- Enable hybrid line numbers
+vim.cmd("set number relativenumber")
 
 -- Enable mouse mode
 vim.o.mouse = ''
