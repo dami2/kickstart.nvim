@@ -136,8 +136,6 @@ end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- highlight current line
-vim.cmd('set cursorline')
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -303,7 +301,10 @@ require('lazy').setup({
     },
     config = function(_, opts)
       require("dracula").setup(opts)
-      vim.cmd.colorscheme 'dracula'
+      vim.cmd.colorscheme 'dracula-soft'
+      vim.cmd('hi Cursorline guibg=#404355')
+      setup_lualine()
+      setup_ibl_if_is_enabled()
     end,
   },
   {
@@ -443,6 +444,8 @@ vim.o.guicursor = 'a:blinkon100'
 
 -- Disable default line numbers
 vim.wo.number = false
+-- Highlight the current line number
+vim.opt.cursorline = true
 
 -- Enable mouse mode
 vim.o.mouse = ''
@@ -919,27 +922,52 @@ cmp.setup {
 }
 
 -- Autocommand for toggling colorscheme on mode change
-local mode_feed_back_group = vim.api.nvim_create_augroup('ModeFeedBack', { clear = true })
-vim.api.nvim_create_autocmd('InsertEnter', {
-  callback = function()
-    vim.cmd.colorscheme 'catppuccin'
-    -- vim.cmd('hi Cursorline guibg=#212121')
-    setup_lualine()
-    setup_ibl_if_is_enabled()
-  end,
-  group = mode_feed_back_group,
-  pattern = '*',
-})
-vim.api.nvim_create_autocmd('InsertLeave', {
-  callback = function()
-    vim.cmd.colorscheme 'dracula-soft'
-    vim.cmd('hi Cursorline guibg=#404355')
-    setup_lualine()
-    setup_ibl_if_is_enabled()
-  end,
-  group = mode_feed_back_group,
-  pattern = '*',
-})
+-- local mode_feed_back_group = vim.api.nvim_create_augroup('ModeFeedBack', { clear = true })
+-- vim.api.nvim_create_autocmd('InsertEnter', {
+--   callback = function()
+--     vim.cmd.colorscheme 'catppuccin'
+--     -- vim.cmd('hi Cursorline guibg=#212121')
+--     setup_lualine()
+--     setup_ibl_if_is_enabled()
+--   end,
+--   group = mode_feed_back_group,
+--   pattern = '*',
+-- })
+-- vim.api.nvim_create_autocmd('InsertLeave', {
+--   callback = function()
+--     vim.cmd.colorscheme 'dracula-soft'
+--     vim.cmd('hi Cursorline guibg=#404355')
+--     setup_lualine()
+--     setup_ibl_if_is_enabled()
+--   end,
+--   group = mode_feed_back_group,
+--   pattern = '*',
+-- })
+--
+vim.api.nvim_exec([[
+  augroup InsertModeColors
+    autocmd!
+    autocmd InsertEnter * hi Normal guibg=#191A21 ctermbg=black
+    autocmd InsertLeave * hi Normal guibg=#303030 ctermbg=NONE
+  augroup END
+]], false)
+
+function create_augroup(autocmds, name)
+  vim.api.nvim_command('augroup ' .. name)
+  vim.api.nvim_command('autocmd!')
+  for _, autocmd in ipairs(autocmds) do
+    local cmd = table.concat(vim.tbl_flatten { 'autocmd', autocmd }, ' ')
+    vim.api.nvim_command(cmd)
+  end
+  vim.api.nvim_command('augroup END')
+end
+
+-- Change cursor shape to a block in insert mode
+create_augroup({
+  { 'InsertEnter', '*', 'set guicursor=a:ver25' },
+  { 'InsertLeave', '*', 'set guicursor=a:blinkon100' }
+
+}, 'change_cursor_shape')
 
 local gotmpl_group = vim.api.nvim_create_augroup("_gotmpl", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
