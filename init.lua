@@ -608,6 +608,9 @@ vim.keymap.set("n", "<leader>cpa", '<cmd>let @+=expand("%:p")<cr>', { desc = '[C
 vim.keymap.set("n", "<leader>cpf", '<cmd>let @+=expand("%:t")<cr>', { desc = '[C]opy buffer [F]ile name [P]ath' })
 vim.keymap.set("n", "<leader>cpd", '<cmd>let @+=expand("%:p:h")<cr>', { desc = '[C]opy buffer [D]ir name [P]ath' })
 
+-- Esc leaves the terminal
+
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = 'Escape terminal' })
 -- Clear highlight search
 vim.keymap.set('n', '<Esc>', '<cmd>noh<cr>', { desc = 'Clear highlights' })
 
