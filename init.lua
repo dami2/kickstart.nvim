@@ -198,7 +198,8 @@ require('lazy').setup({
             "json-lsp",
             "prettier",
             "pyright",
-            "rust-analyzer"
+            "rust-analyzer",
+            "denols"
           }
         }
       },
@@ -632,6 +633,7 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = 'Escape terminal' })
 --
 -- -- Curly braces with semicolon and Enter
 -- vim.api.nvim_set_keymap('i', '{;<CR>', '{<CR>};<ESC>O', { noremap = true })
+
 -- Clear highlight search
 vim.keymap.set('n', '<Esc>', '<cmd>noh<cr>', { desc = 'Clear highlights' })
 
@@ -991,6 +993,33 @@ mason_lspconfig.setup_handlers {
   --     single_file_support = true,
   --   }
   -- end,
+  ["denols"] = function()
+    local lspconfig = require('lspconfig')
+    local util = require('lspconfig.util')
+
+    lspconfig.denols.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      root_dir = util.root_pattern("deno.json", "deno.jsonc")
+    }
+  end,
+  ["tsserver"] = function()
+    local lspconfig = require('lspconfig')
+    local util = require('lspconfig.util')
+
+    lspconfig.tsserver.setup {
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        -- Optionally disable tsserver in Deno projects
+        if util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
+          client.stop() -- Stop tsserver in Deno projects
+        else
+          on_attach(client, bufnr)
+        end
+      end,
+      root_dir = util.root_pattern("package.json"), -- Only attach to Node.js projects
+    }
+  end,
 }
 
 -- [[ Configure nvim-cmp ]]
