@@ -611,6 +611,27 @@ vim.keymap.set("n", "<leader>cpd", '<cmd>let @+=expand("%:p:h")<cr>', { desc = '
 -- Esc leaves the terminal
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = 'Escape terminal' })
+--auto close mappings
+-- Double quotes
+-- vim.api.nvim_set_keymap('i', '"', '""<left>', { noremap = true })
+--
+-- -- Single quotes
+-- vim.api.nvim_set_keymap('i', "'", "''<left>", { noremap = true })
+--
+-- -- Parentheses
+-- vim.api.nvim_set_keymap('i', '(', '()<left>', { noremap = true })
+--
+-- -- Square brackets
+-- vim.api.nvim_set_keymap('i', '[', '[]<left>', { noremap = true })
+--
+-- -- Curly braces
+-- vim.api.nvim_set_keymap('i', '{', '{}<left>', { noremap = true })
+--
+-- -- Curly braces with Enter
+-- vim.api.nvim_set_keymap('i', '{<CR>', '{<CR>}<ESC>O', { noremap = true })
+--
+-- -- Curly braces with semicolon and Enter
+-- vim.api.nvim_set_keymap('i', '{;<CR>', '{<CR>};<ESC>O', { noremap = true })
 -- Clear highlight search
 vim.keymap.set('n', '<Esc>', '<cmd>noh<cr>', { desc = 'Clear highlights' })
 
