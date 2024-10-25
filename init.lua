@@ -452,6 +452,12 @@ require('lazy').setup({
   -- {
   --   'chr4/nginx.vim'
   -- }
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {},
+    event = "VeryLazy",
+  },
 }, {})
 
 -- [[ Setting options ]]
