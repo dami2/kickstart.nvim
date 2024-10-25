@@ -623,6 +623,11 @@ vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
 })
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_enabled = true
+
+-- Map Caps Lock to Escape in Neovim
+vim.api.nvim_set_keymap('n', '<CapsLock>', '<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<CapsLock>', '<Esc>', { noremap = true, silent = true })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
