@@ -445,6 +445,10 @@ require('lazy').setup({
     'prettier/vim-prettier'
   },
 
+  {
+    'github/copilot.vim'
+  },
+
 }, {})
 
 -- [[ Setting options ]]
@@ -570,6 +574,18 @@ vim.keymap.set("n", "<leader>cpd", '<cmd>let @+=expand("%:p:h")<cr>', { desc = '
 -- Clear highlight search
 vim.keymap.set('n', '<Esc>', '<cmd>noh<cr>', { desc = 'Clear highlights' })
 
+-- Copilot mappings
+-- vim.keymap.set('i', '<C-J>', 'copilot#Accept("<CR>")', {
+--   expr = true,
+--   replace_keycodes = false
+-- })
+
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_enabled = true
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -937,6 +953,9 @@ cmp.setup {
       }
     }
   },
+  experimental = {
+    ghost_text = false -- this feature conflict with copilot.vim's preview.
+  }
 }
 
 -- Autocommand for toggling colorscheme on mode change
