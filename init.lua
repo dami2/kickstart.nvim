@@ -907,7 +907,7 @@ local servers = {
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
   helm_ls = {},
   yamlls = {},
-  sqlls = {},
+  sqlls = { filetypes = { 'sql' } },
   -- nginx_language_server = {},
 
   lua_ls = {
@@ -957,6 +957,21 @@ mason_lspconfig.setup_handlers {
       filetypes = { 'helm', 'yaml', 'yml' },
       root_dir = function(fname)
         return util.root_pattern('Chart.yaml')(fname)
+      end,
+    }
+  end,
+  ["sqlls"] = function()
+    local lspconfig = require('lspconfig')
+    local util = require('lspconfig.util')
+
+    lspconfig.sqlls.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      cmd = { "sql-language-server", "up", "--method", "stdio" },
+      filetypes = { "sql" },
+      -- root_dir = lspconfig.util.root_pattern(".git", vim.fn.getcwd()),
+      root_dir = function(fname)
+        return util.root_pattern(".git", vim.fn.getcwd())(fname)
       end,
     }
   end,
