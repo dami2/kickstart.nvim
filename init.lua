@@ -909,6 +909,7 @@ local servers = {
   yamlls = {},
   sqlls = { filetypes = { 'sql' } },
   -- nginx_language_server = {},
+  zls = {},
 
   lua_ls = {
     Lua = {
