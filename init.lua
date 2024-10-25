@@ -225,7 +225,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -261,9 +261,11 @@ require('lazy').setup({
           end)
           return '<Ignore>'
         end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
-        vim.keymap.set('n', '<leader>tgb', require('gitsigns').toggle_current_line_blame, { buffer = bufnr, desc = '[T]oggle [G]it [B]lame' })
+        vim.keymap.set('n', '<leader>tgb', require('gitsigns').toggle_current_line_blame,
+          { buffer = bufnr, desc = '[T]oggle [G]it [B]lame' })
         vim.keymap.set('n', '<leader>rh', require('gitsigns').reset_hunk, { buffer = bufnr, desc = '[R]eset [H]uk' })
-        vim.keymap.set('n', '<leader>gsh', require('gitsigns').stage_hunk, { buffer = bufnr, desc = '[G]it [S]tage [H]uk' })
+        vim.keymap.set('n', '<leader>gsh', require('gitsigns').stage_hunk,
+          { buffer = bufnr, desc = '[G]it [S]tage [H]uk' })
       end,
     },
   },
@@ -493,7 +495,7 @@ vim.keymap.set('n', '<leader>tn', '<cmd>set invnumber<cr>', { desc = '[ti] Toggl
 -- Toggle relative line numbers
 vim.keymap.set('n', '<leader>tr', '<cmd>set invrelativenumber<cr>', { desc = '[ti] Toggle relatie line numbers' })
 
--- Toggle quickfix 
+-- Toggle quickfix
 vim.keymap.set('n', '<leader>tq', function()
   local qf_exists = false
   for _, win in pairs(vim.fn.getwininfo()) do
@@ -529,7 +531,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv<cmd>lua Blink_highlight_search(0.3)<cr>")
 vim.keymap.set("n", "N", "Nzzzv<cmd>lua Blink_highlight_search(0.3)<cr>")
 
--- Move selected lines 
+-- Move selected lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -626,7 +628,7 @@ end, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', function()
   require('telescope.builtin').diagnostics { no_sign = false }
 end
-  , { desc = '[S]earch [D]iagnostics' })
+, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 vim.keymap.set('n', '<leader>sm', require('telescope.builtin').git_commits, { desc = '[S]earch co[M]mits' })
 vim.keymap.set('n', '<leader>so', require('telescope.builtin').git_bcommits, { desc = '[S]earch buffer C[o]mmits' })
