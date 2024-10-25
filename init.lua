@@ -978,6 +978,18 @@ mason_lspconfig.setup_handlers {
       end,
     }
   end,
+  ["eslint"] = function()
+    local lspconfig = require('lspconfig')
+    local util = require('lspconfig.util')
+
+    lspconfig.eslint.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      root_dir = function(fname)
+        return util.root_pattern(".git", vim.fn.getcwd())(fname)
+      end,
+    }
+  end,
   -- ["nginx_language_server"] = function()
   --   local lspconfig = require('lspconfig')
   --   local util = require('lspconfig.util')
