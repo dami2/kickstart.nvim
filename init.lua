@@ -136,6 +136,10 @@ end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Enable display of hidden characters (spaces, tabs, end-of-line)
+-- vim.opt.list = true
+-- -- Customize list characters
+-- vim.opt.listchars:append({ space = '.', tab = '>-', eol = '$' })
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
