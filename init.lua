@@ -141,6 +141,10 @@ vim.g.maplocalleader = ' '
 -- -- Customize list characters
 -- vim.opt.listchars:append({ space = '.', tab = '>-', eol = '$' })
 
+-- disable netrwPlugin
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -406,6 +410,7 @@ require('lazy').setup({
 
   {
     'stevearc/oil.nvim',
+    lazy = false,
     opts = {
       default_file_explorer = true,
       -- columns = {
