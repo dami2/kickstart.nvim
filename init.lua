@@ -229,7 +229,7 @@ require('lazy').setup({
 
       -- Adds source for buffer words
       'hrsh7th/cmp-buffer'
-    },
+    }
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -449,6 +449,9 @@ require('lazy').setup({
     'github/copilot.vim'
   },
 
+  -- {
+  --   'chr4/nginx.vim'
+  -- }
 }, {})
 
 -- [[ Setting options ]]
@@ -842,6 +845,7 @@ local servers = {
   helm_ls = {},
   yamlls = {},
   sqlls = {},
+  -- nginx_language_server = {},
 
   lua_ls = {
     Lua = {
@@ -893,6 +897,21 @@ mason_lspconfig.setup_handlers {
       end,
     }
   end,
+  -- ["nginx_language_server"] = function()
+  --   local lspconfig = require('lspconfig')
+  --   local util = require('lspconfig.util')
+  --
+  --   lspconfig.nginx_language_server.setup {
+  --     capabilities = capabilities,
+  --     on_attach = on_attach,
+  --     cmd = { 'nginx-language-server' },
+  --     filetypes = { 'nginx' },
+  --     root_dir = function(fname)
+  --       return util.root_pattern('*.conf', '.git') or util.find_git_ancestor(fname)
+  --     end,
+  --     single_file_support = true,
+  --   }
+  -- end,
 }
 
 -- [[ Configure nvim-cmp ]]
