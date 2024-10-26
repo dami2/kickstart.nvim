@@ -222,6 +222,10 @@ vim.keymap.set("n", "N", "Nzzzv<cmd>lua Hl_search(0.3)<cr>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Widow arrangement
+vim.keymap.set("n", "<leader>wh", "<cmd>windo wincmd K<cr>", { desc = 'Arrange [W]indows [H]orizontaly' })
+vim.keymap.set("n", "<leader>wv", "<cmd>windo wincmd H<cr>", { desc = 'Arrange [W]indows [V]erticaly' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
