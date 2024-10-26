@@ -199,6 +199,10 @@ vim.keymap.set('n', '<leader>tn', '<cmd>set invnumber<cr>', { desc = '[ti] Toggl
 -- Toggle relative line numbers
 vim.keymap.set('n', '<leader>tr', '<cmd>set invrelativenumber<cr>', { desc = '[ti] Toggle relatie line numbers' })
 
+-- Mappings for buffers
+vim.keymap.set('n', '<leader>bca', '<cmd>bufdo bdelete<cr>', { desc = '[B]uffers [C]lose [A]ll' })
+vim.keymap.set('n', '<leader>bco', '<cmd>%bd|e#<cr>', { desc = '[B]uffers [C]lose [O]thers' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
