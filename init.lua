@@ -232,6 +232,8 @@ vim.keymap.set("n", "<leader>cpa", '<cmd>let @+=expand("%:p")<cr>', { desc = '[C
 vim.keymap.set("n", "<leader>cpf", '<cmd>let @+=expand("%:t")<cr>', { desc = '[C]opy buffer [F]ile name [P]ath' })
 vim.keymap.set("n", "<leader>cpd", '<cmd>let @+=expand("%:p:h")<cr>', { desc = '[C]opy buffer [D]ir name [P]ath' })
 
+-- Clear highlight search
+vim.keymap.set('n', '<Esc>', '<cmd>noh<cr>', { desc = 'Clear highlights' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
