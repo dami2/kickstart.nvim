@@ -207,6 +207,9 @@ vim.keymap.set('n', '<leader>bco', '<cmd>%bd|e#<cr>', { desc = '[B]uffers [C]los
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = '[y] Yank to clipboard' })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = '[Y] Yank line to clipboard' })
 
+-- Keep cursor in position after joining lines
+vim.keymap.set("n", "J", "mzJ`z")
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
