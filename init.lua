@@ -160,6 +160,10 @@ vim.opt.scrolloff = 10
 -- Set blinking cursor
 vim.o.guicursor = 'a:blinkon100'
 
+-- disable netrwPlugin
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
