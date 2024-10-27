@@ -433,9 +433,12 @@ require('lazy').setup({
             i = { 
               -- ['<c-enter>'] = 'to_fuzzy_refine' 
               ["<C-l>"] = action_layout.toggle_preview,
+              ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center -- center view after selection
+
             },
             n = {
-              ["<C-l>"] = action_layout.toggle_preview
+              ["<C-l>"] = action_layout.toggle_preview,
+              ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center, -- center view after selection
             }
           },
         },
