@@ -441,6 +441,13 @@ require('lazy').setup({
               ["<CR>"] = require("telescope.actions").select_default + require("telescope.actions").center, -- center view after selection
             }
           },
+          layout_strategy = "vertical",
+          layout_config = {
+            vertical = {
+              height = { padding = 0 },
+              width = { padding = 0 }
+            }
+          },
         },
         -- pickers = {}
         extensions = {
