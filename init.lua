@@ -1093,7 +1093,14 @@ require('lazy').setup({
     init = function()
       vim.g.camelcasemotion_key = '<leader>'
     end
-  }
+  },
+  -- Better quickfix window in Neovim
+  {
+    "kevinhwang91/nvim-bqf",
+    event = "VeryLazy",
+    opt = {}
+  },
+
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
