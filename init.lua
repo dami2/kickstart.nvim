@@ -99,10 +99,13 @@ vim.g.have_nerd_font = false
 --  For more options, you can see `:help option-list`
 
 -- Make line numbers default
-vim.opt.number = false
+-- vim.opt.number = false
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.opt.relativenumber = true
+
+-- -- Enable hybrid line numbers
+vim.cmd("set number relativenumber")
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = ''
