@@ -653,6 +653,18 @@ require('lazy').setup({
           --  For example, in C this would take you to the header.
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+          -- Toggle LSP on/off
+          map('<leader>tl', function()
+            local original_bufnr = vim.api.nvim_get_current_buf()
+            local buf_clients = vim.lsp.get_active_clients { bufnr = original_bufnr }
+
+            if buf_clients[1] == nil then
+              vim.cmd('LspStart')
+            else
+              vim.cmd('LspStop')
+            end
+          end, '[tl] Toggle LSP')
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
