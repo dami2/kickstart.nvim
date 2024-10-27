@@ -522,6 +522,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>su', require('telescope.builtin').git_status, { desc = '[S]earch Git Stat[U]s' })
       vim.keymap.set('n', '<leader>st', require('telescope.builtin').git_stash, { desc = '[S]earch git s[T]ash' })
 
+      vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc = '[S]earch [C]ommands' })
+      vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [B]uffers' })
+
     end,
   },
 
