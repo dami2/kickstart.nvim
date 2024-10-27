@@ -1084,6 +1084,9 @@ require('lazy').setup({
     },
     -- Optional dependencies
     -- dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  {
+    'tpope/vim-abolish'
   }
 }, {
   ui = {
