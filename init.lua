@@ -610,6 +610,9 @@ require('lazy').setup({
           map('gr', function()
             require('telescope.builtin').lsp_references({ show_line = false, file_ignore_patterns = { "%.spec.*" } })
           end, '[G]oto [R]eferences (excluding tests)')
+          map('<leader>gr', function()
+            require('telescope.builtin').lsp_references { show_line = false }
+          end, '[G]oto [R]eferences (including tests)')
 
 
           -- Jump to the implementation of the word under your cursor.
