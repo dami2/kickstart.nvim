@@ -254,6 +254,8 @@ vim.g.copilot_enabled = true
 vim.api.nvim_set_keymap('n', '<CapsLock>', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<CapsLock>', '<Esc>', { noremap = true, silent = true })
 
+-- Esc leaves the terminal
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = 'Escape terminal' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
