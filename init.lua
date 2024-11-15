@@ -206,6 +206,9 @@ vim.keymap.set('n', '<leader>tr', '<cmd>set invrelativenumber<cr>', { desc = '[t
 vim.keymap.set('n', '<leader>bca', '<cmd>bufdo bdelete<cr>', { desc = '[B]uffers [C]lose [A]ll' })
 vim.keymap.set('n', '<leader>bco', '<cmd>%bd|e#<cr>', { desc = '[B]uffers [C]lose [O]thers' })
 
+-- Keep cursor in position after joining lines
+vim.keymap.set('n', 'J', 'mzJ`z')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
