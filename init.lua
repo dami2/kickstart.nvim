@@ -196,6 +196,12 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = '[y] Yank to clipboard' })
 vim.keymap.set('n', '<leader>Y', [["+Y]], { desc = '[Y] Yank line to clipboard' })
 
+-- Toggle line numbers
+vim.keymap.set('n', '<leader>tn', '<cmd>set invnumber<cr>', { desc = '[ti] Toggle line numbers' })
+
+-- Toggle relative line numbers
+vim.keymap.set('n', '<leader>tr', '<cmd>set invrelativenumber<cr>', { desc = '[ti] Toggle relatie line numbers' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
