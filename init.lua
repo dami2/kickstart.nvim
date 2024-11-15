@@ -1127,6 +1127,13 @@ require('lazy').setup({
       --     NextParagraph = { text = "}", prio = 8 },
       -- },
     },
+
+    {
+      'norcalli/nvim-colorizer.lua',
+      config = function()
+        require('colorizer').setup()
+      end,
+    },
   },
 }, {
   ui = {
