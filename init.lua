@@ -782,6 +782,7 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'eslint-lsp', -- Used to provide linting and formatting for JavaScript and TypeScript
         'prettier', -- Used to provide formatting for many languages
+        'typescript-language-server', -- Used to provide TypeScript and JavaScript language features
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
