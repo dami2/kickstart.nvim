@@ -209,6 +209,10 @@ vim.keymap.set('n', '<leader>bco', '<cmd>%bd|e#<cr>', { desc = '[B]uffers [C]los
 -- Keep cursor in position after joining lines
 vim.keymap.set('n', 'J', 'mzJ`z')
 
+-- Center view after moving
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
