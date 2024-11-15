@@ -235,6 +235,14 @@ vim.keymap.set('n', '<leader>cpd', '<cmd>let @+=expand("%:p:h")<cr>', { desc = '
 vim.api.nvim_set_keymap('n', '<CapsLock>', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<CapsLock>', '<Esc>', { noremap = true, silent = true })
 
+-- Copilot mappings
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false,
+})
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_enabled = true
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -1133,6 +1141,10 @@ require('lazy').setup({
       config = function()
         require('colorizer').setup()
       end,
+    },
+
+    {
+      'github/copilot.vim',
     },
   },
 }, {
