@@ -1093,6 +1093,13 @@ require('lazy').setup({
     event = 'VeryLazy',
     opt = {},
   },
+
+  {
+    'm4xshen/hardtime.nvim',
+    dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
+    opts = {},
+    event = 'VeryLazy',
+  },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
