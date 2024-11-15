@@ -231,6 +231,10 @@ vim.keymap.set('n', '<leader>cpa', '<cmd>let @+=expand("%:p")<cr>', { desc = '[C
 vim.keymap.set('n', '<leader>cpf', '<cmd>let @+=expand("%:t")<cr>', { desc = '[C]opy buffer [F]ile name [P]ath' })
 vim.keymap.set('n', '<leader>cpd', '<cmd>let @+=expand("%:p:h")<cr>', { desc = '[C]opy buffer [D]ir name [P]ath' })
 
+-- Map Caps Lock to Escape in Neovim
+vim.api.nvim_set_keymap('n', '<CapsLock>', '<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<CapsLock>', '<Esc>', { noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
