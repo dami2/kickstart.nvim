@@ -1065,6 +1065,28 @@ require('lazy').setup({
   -- Personal Plugins
 
   'tpope/vim-fugitive',
+
+  {
+    'stevearc/oil.nvim',
+    lazy = false,
+    opts = {
+      default_file_explorer = true,
+      -- columns = {
+      --   -- "icon",
+      --   "permissions",
+      --   "size",
+      --   "mtime",
+      -- },
+      keymaps = {
+        ['.'] = 'actions.cd',
+      },
+    },
+    keys = {
+      { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
+    },
+    -- Optional dependencies
+    -- dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
