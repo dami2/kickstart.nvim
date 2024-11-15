@@ -765,6 +765,16 @@ require('lazy').setup({
             return require('lspconfig.util').root_pattern('.git', vim.fn.getcwd())(fname)
           end,
         },
+        ['helm-ls'] = {
+
+          filetypes = { 'helm', 'yaml', 'yml' },
+          -- yamlls = {
+          --   path = 'yaml-language-server',
+          -- },
+          root_dir = function(fname)
+            return require('lspconfig.util').root_pattern('Chart.yaml', vim.fn.getcwd())(fname)
+          end,
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -783,6 +793,7 @@ require('lazy').setup({
         'eslint-lsp', -- Used to provide linting and formatting for JavaScript and TypeScript
         'prettier', -- Used to provide formatting for many languages
         'typescript-language-server', -- Used to provide TypeScript and JavaScript language features
+        'yaml-language-server', -- Used to provide YAML language features
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -1158,6 +1169,13 @@ require('lazy').setup({
 
     {
       'github/copilot.vim',
+    },
+
+    {
+      'towolf/vim-helm',
+      -- event = "VeryLazy",
+      lazy = false,
+      ft = 'helm',
     },
   },
 }, {
