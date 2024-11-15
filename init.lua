@@ -760,6 +760,11 @@ require('lazy').setup({
             },
           },
         },
+        eslint = {
+          root_dir = function(fname)
+            return require('lspconfig.util').root_pattern('.git', vim.fn.getcwd())(fname)
+          end,
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -775,6 +780,8 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'eslint-lsp', -- Used to provide linting and formatting for JavaScript and TypeScript
+        'prettier', -- Used to provide formatting for many languages
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -832,6 +839,11 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettier', 'eslint_d' },
+        typescript = { 'prettier', 'eslint_d' },
+        json = { 'prettier' }, -- JSON is a common file type that can be formatted by prettier
+        markdown = { 'prettier' }, -- Markdown is a common file type that can be formatted by prettier
+        yaml = { 'prettier' }, -- YAML is a common file type that can be formatted by prettier
       },
     },
   },
