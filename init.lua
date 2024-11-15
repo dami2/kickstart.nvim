@@ -833,20 +833,27 @@ require('lazy').setup({
     end,
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
-
-      -- You can configure highlights by doing something like:
+  {
+    'Mofiqul/dracula.nvim',
+    priority = 1000,
+    opts = {
+      theme = 'dracula-soft',
+      colors = {
+        bg = '#303030',
+      },
+      overrides = function(colors)
+        return {
+          Search = { fg = colors.black, bg = colors.cyan },
+          -- StatusLine = { bg = colors.black },
+          -- StatusLineNC = { bg = colors.black },
+          NonText = { fg = colors.gutter_fg }, -- set NonText fg to white
+          CursorLine = { bg = colors.nontext },
+        }
+      end,
+    },
+    config = function(_, opts)
+      require('dracula').setup(opts)
+      vim.cmd.colorscheme 'dracula-soft'
       vim.cmd.hi 'Comment gui=none'
     end,
   },
