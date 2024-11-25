@@ -1115,6 +1115,8 @@ require('lazy').setup({
 
   'tpope/vim-fugitive',
 
+  'tpope/vim-abolish',
+
   {
     'stevearc/oil.nvim',
     lazy = false,
