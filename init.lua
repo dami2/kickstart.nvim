@@ -278,6 +278,25 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   end,
 })
 
+-- Change the cursor colors when switching modes
+vim.api.nvim_create_augroup('ChangeCursorShape', { clear = true })
+
+vim.api.nvim_create_autocmd('InsertEnter', {
+  group = 'ChangeCursorShape',
+  pattern = '*',
+  callback = function()
+    vim.o.guicursor = 'a:ver25'
+  end,
+})
+
+vim.api.nvim_create_autocmd('InsertLeave', {
+  group = 'ChangeCursorShape',
+  pattern = '*',
+  callback = function()
+    vim.o.guicursor = 'a:blinkon100'
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
