@@ -801,6 +801,7 @@ require('lazy').setup({
           },
         },
         eslint = {
+          filetypes = { 'javascript', 'typescript', 'json' },
           root_dir = function(fname)
             return require('lspconfig.util').root_pattern('.git', vim.fn.getcwd())(fname)
           end,
