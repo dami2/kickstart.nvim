@@ -893,8 +893,8 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
-        javascript = { 'prettier', 'eslint_d' },
-        typescript = { 'prettier', 'eslint_d' },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
         json = { 'prettier' }, -- JSON is a common file type that can be formatted by prettier
         markdown = { 'prettier' }, -- Markdown is a common file type that can be formatted by prettier
         yaml = { 'prettier' }, -- YAML is a common file type that can be formatted by prettier
