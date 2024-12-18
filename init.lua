@@ -835,6 +835,7 @@ require('lazy').setup({
         'prettier', -- Used to provide formatting for many languages
         'typescript-language-server', -- Used to provide TypeScript and JavaScript language features
         'yaml-language-server', -- Used to provide YAML language features
+        'markdownlint', -- Used to provide Markdown linting
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
